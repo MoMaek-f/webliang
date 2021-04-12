@@ -1,0 +1,11 @@
+/* miniprogram/pages/mine/mine.wxss */
+.user_info_container {
+  background-color: yellow;
+}
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-color: green;
+  /* float: left; */
+}

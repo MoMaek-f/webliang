@@ -1,0 +1,33 @@
+<!--miniprogram/pages/homePage/homePage.wxml-->
+<van-tabs active="{{ active }}" bind:click="selector">
+  <van-tab title="{{true ? '选择学校' : '选好了'}}"></van-tab>
+  <van-tab title="{{true ? '选择时间' : '选好了'}}"></van-tab>
+  <van-tab title="{{true ? '搜索' : '选好了'}}"></van-tab>
+</van-tabs>
+
+<view wx:for="{{published_data}}" wx:key="index">
+	<van-card price='{{item.price}}' desc="{{ item.desc }}" title="{{ item.title }}" thumb="" bindtap="to_task_detail">
+		<view slot="footer">
+			<van-button size="mini" catchtap="showShareAction">分享</van-button>
+			<van-button size="mini" type="primary" catchtap="accept">接受</van-button>
+		</view>
+	</van-card>
+</view>
+
+<!-- 日期选择 -->
+<van-calendar show="{{ show }}" bind:close="onClose_select_date" bind:confirm="onConfirm_select_date" />
+
+<!-- 新发布 -->
+<view
+		style="position:fixed; bottom:10px; right: 20px; border-radius: 50%; width:50px; height: 50px; background-color: #FFFFFF;"
+		bindtap="new_publish">
+		<van-icon name="plus" color="green" size="50px" style="position:fixed; bottom:10px; right: 20px;" />
+	</view>
+
+
+
+<!-- 弹窗 -->
+<van-dialog id="van-dialog" />
+<!-- 分享 -->
+<van-share-sheet show="{{ showShare }}" title="立即分享给好友" options="{{ options }}" bind:cancel="closeShareAction"
+	bind:click-overlay="closeShareAction" />

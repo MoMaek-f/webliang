@@ -1,0 +1,26 @@
+<!--miniprogram/pages/new_publish/new_publish.wxml-->
+<!-- <van-nav-bar
+  title="标题"
+  left-text="返回"
+  left-arrow
+  bind:click-left="onClickBack"
+  custom-style="color: red；"
+/> -->
+<swiper class="list" indicator-dots="true">
+  <swiper-item class="page1">
+    <block wx:for="{{navs}}" wx:key="{{index}}">
+      <view class="navbox" data-alias="{{ item.alias }}" bindtap="switchtap">
+        <image class="navimg" src="{{item.navimg}}"></image>
+       <view><text class="navtext">{{item.navtext}}</text></view> 
+      </view>
+    </block>
+  </swiper-item>
+  <swiper-item class="page2">
+   <block wx:for="{{navs2}}" wx:key="{{index}}">
+      <view class="navbox" data-alias="{{ item.alias }}" bindtap="switchtap">
+        <image class="navimg" src="{{item.navimg}}"></image>
+       <view><text class="navtext">{{item.navtext}}</text></view> 
+      </view>
+    </block>
+  </swiper-item>
+</swiper>

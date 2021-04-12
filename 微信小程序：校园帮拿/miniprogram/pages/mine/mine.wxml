@@ -1,0 +1,22 @@
+<!--miniprogram/pages/mine/mine.wxml-->
+<van-cell-group title="用户信息" style="border-radius: 5px">
+  <van-cell title="个人信息" value="{{ login_status.islogin? login_status.login_username: '未登录' }}" is-link />
+</van-cell-group>
+<van-cell-group title=" ">
+  <van-cell title="我的记录" value="内容" is-link />
+</van-cell-group>
+<van-cell-group title=" ">
+  <van-cell title="公告" value="内容" is-link />
+  <van-cell title="日志" value="内容" is-link />
+  <van-cell title="反馈" value="内容" is-link />
+  <van-cell title="关于" value="内容" is-link />
+</van-cell-group>
+<!-- 登录 -->
+<view style="display: flex; justify-content: center;">
+  <view
+	style="position:fixed; bottom:10px; border-radius: 50%; height: 50px; background-color: #FFFFFF;"
+	bindtap="new_publish">
+  <!-- <van-icon name="plus" color="#f6f6f6" size="50px" style="position:fixed; bottom:10px;" /> -->
+  <van-button wx:if="{{!login_status.islogin}}" round type="primary" bindtap="login">登录</van-button>
+</view>
+</view>
