@@ -1,28 +1,64 @@
-// miniprogram/pages/new_publish/new_publish.js
+import Toast from '/@vant/weapp/toast/toast';
+const db = wx.cloud.database()
+let app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    navs: [
-      { navimg: '../../images/class.png', navtext: '快递代取', alias: 'jianjie' },
-      { navimg: '../../images/weather.png', navtext: '外卖代取', alias: 'weather' },
-      { navimg: '../../images/jiangshi.png', navtext: '跑腿服务', alias: 'jiangshi'},
-      { navimg: '../../images/ziliao.png', navtext: '打印服务', alias: 'ziliao'},
-      { navimg: '../../images/anpai.png', navtext: '组队邀请', alias: 'date'},
-      { navimg: '../../images/jihua.png', navtext: '失物招领', alias: 'jihua'},
-      { navimg: '../../images/huodong.png', navtext: '二手交易', alias: 'huodong' },
-      { navimg: '../../images/shunfeng.png', navtext: '求助校友', alias: 'renwu' },
-    ], 
-    navs2: [
-      { navimg: '../../images/class.png', navtext: '其他帮助', alias: 'list' },
-     
-    ],
+    task_title: '',
+    task_detail: '',
+    task_description: '',
+    task_type: '',
+    task_price: '',
+    task_contact_qq: '',
+    task_contact_wechat: '',
+    task_contact_tel: '',
   },
-  onClickBack: function () {
-    wx.navigateBack({ delta: 1 })
+  addData: function () {
+    db.collection("published_list").add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        task_title:     this.data.task_title,
+        task_detail:     this.data.task_detail,
+        task_description:     this.data.task_description,
+        task_type:     this.data.task_type,
+        task_price:     this.data.task_price,
+        task_contact_qq:     this.data.task_contact_qq,
+        task_contact_wechat:     this.data.task_contact_wechat,
+        task_contact_tel:     this.data.task_contact_tel,
+        task_status: 0,
+        task_accepter: '',
+        task_publisher: app.globalData.userInfo.userid,
+        task_img_url: app.globalData.userInfo.avatarUrl
+      }
+    })
+      .then(res => {
+        console.log(res)
+      })
   },
+  confirm_publish: function () {
+    if(this.data.task_title!=='') {
+      this.addData()
+      Toast.loading({
+        message: '已发布',
+        forbidClick: true,
+        onClose: () => {
+          wx.navigateBack({   //然后返回上一个页面
+            delta: 1
+          })      
+        },
+      });
+    }
+    else{
+      Toast.loading({
+        message: '请填写信息',
+        forbidClick: true,
+      });
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

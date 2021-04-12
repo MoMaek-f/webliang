@@ -1,21 +1,20 @@
 {
   "pages": [
-    "pages/mine/mine",
-    "pages/login/login",
     "pages/homePage/homePage",
-    "pages/accept/accept",
     "pages/new_publish/new_publish",
+    "pages/mine/mine",
+    "pages/accept/accept",
     "pages/task_detail/task_detail",
     "pages/homePage/indexBar/indexbar",
-    "pages/login/signup/signup"
+    "pages/mine/personal_info/personal_info",
+    "pages/mine/history/history"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "校园帮拿",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "list": [
@@ -58,6 +57,13 @@
     "van-image": "@vant/weapp/image/index",
     "van-empty": "@vant/weapp/empty/index",
     "van-index-bar": "@vant/weapp/index-bar/index",
-    "van-index-anchor": "@vant/weapp/index-anchor/index"
+    "van-index-anchor": "@vant/weapp/index-anchor/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "mp-form-page": "weui-miniprogram/form-page/form-page",
+    "mp-form": "weui-miniprogram/form/form",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

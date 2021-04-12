@@ -9,3 +9,7 @@
   background-color: green;
   /* float: left; */
 }
+.loginPopup {
+  text-align: center;
+  margin: 60rpx 0;
+}

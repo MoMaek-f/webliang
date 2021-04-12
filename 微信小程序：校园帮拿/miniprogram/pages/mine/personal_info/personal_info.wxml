@@ -1,0 +1,17 @@
+<!--miniprogram/pages/mine/personal_info/personal_info.wxml-->
+<van-cell-group title="用户信息" style="border-radius: 5px">
+  <van-cell title="用户名" value="{{userInfo.nickName}}" is-link />
+  <van-cell 
+  title="性别" 
+  value="{{ userInfo.gender != 0 ? userInfo.gender == 1 ?'男' : '女' : '未知'}} " 
+  is-link />
+  <van-cell title="城市" value="{{userInfo.province}}" is-link />
+  <van-cell title="手机号" value="{{userInfo.nickName}}" is-link />
+</van-cell-group>
+<!-- 退出登录 -->
+<view style="display: flex; justify-content: center;">
+  <view style="position:fixed; bottom:10px; border-radius: 50%; height: 50px; background-color: #FFFFFF;">
+    <!-- <van-icon name="plus" color="#f6f6f6" size="50px" style="position:fixed; bottom:10px;" /> -->
+    <van-button wx:if="{{login_status.islogin}}" round type="primary" bindtap="logout">退出登录</van-button>
+  </view>
+</view>

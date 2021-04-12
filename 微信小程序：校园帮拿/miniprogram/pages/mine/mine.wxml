@@ -1,22 +1,58 @@
 <!--miniprogram/pages/mine/mine.wxml-->
+<view class="container">
+  <view class="login-icon"> 
+    <van-image
+    round
+    width="5rem"
+    height="5rem"
+    src="{{userInfo.avatarUrl}}"
+    />
+  </view> 
+</view>
 <van-cell-group title="用户信息" style="border-radius: 5px">
-  <van-cell title="个人信息" value="{{ login_status.islogin? login_status.login_username: '未登录' }}" is-link />
+  <van-cell 
+    title="个人信息"
+    value="{{ userInfo.nickName != undefined ? userInfo.nickName : '未登录' }}" 
+    is-link
+    bindtap="check_info" />
+</van-cell-group>
+
+<van-cell-group title=" ">
+  <van-cell title="我的记录" value="历史记录" is-link  bindtap="history"/>
 </van-cell-group>
 <van-cell-group title=" ">
-  <van-cell title="我的记录" value="内容" is-link />
-</van-cell-group>
-<van-cell-group title=" ">
-  <van-cell title="公告" value="内容" is-link />
-  <van-cell title="日志" value="内容" is-link />
-  <van-cell title="反馈" value="内容" is-link />
-  <van-cell title="关于" value="内容" is-link />
+  <van-cell title="公告" value="" is-link />
+  <van-cell title="日志" value="" is-link />
+  <van-cell title="反馈" value="" is-link />
+  <van-cell title="关于" value="" is-link />
 </van-cell-group>
 <!-- 登录 -->
 <view style="display: flex; justify-content: center;">
-  <view
-	style="position:fixed; bottom:10px; border-radius: 50%; height: 50px; background-color: #FFFFFF;"
-	bindtap="new_publish">
-  <!-- <van-icon name="plus" color="#f6f6f6" size="50px" style="position:fixed; bottom:10px;" /> -->
-  <van-button wx:if="{{!login_status.islogin}}" round type="primary" bindtap="login">登录</van-button>
+  <view style="position:fixed; bottom:10px; border-radius: 50%; height: 50px; background-color: #FFFFFF;"
+    bindtap="new_publish">
+    <!-- <van-icon name="plus" color="#f6f6f6" size="50px" style="position:fixed; bottom:10px;" /> -->
+    <van-button wx:if="{{!loginStatus}}" round type="primary" bindtap="login">登录</van-button>
+  </view>
 </view>
-</view>
+<van-popup show="{{ showLoginPopup }}" bind:close="onClose" position="bottom">
+  <view class="loginPopup">
+    <view>
+      <van-image width="100" height="100" round
+        src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg12.3lian.com%2Fgaoqing02%2F01%2F28%2F01%2F46.jpg&refer=http%3A%2F%2Fimg12.3lian.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1619146244&t=6e9e7b75d6c996ab04e02b50392b4b76" />
+    </view>
+    <text>
+      校园帮拿
+    </text>
+    <text>
+      帮助每一位学子解决问题
+    </text>
+    <view style="margin: 40rpx;">
+      <van-button type="primary" round bindtap="clickLogin"> 微信授权一键登录</van-button>
+    </view>
+    <label class="radio">
+      <radio value="r1" checked="true" />
+      授权微信获取你的手机号码头像地区
+    </label>
+
+  </view>
+</van-popup>

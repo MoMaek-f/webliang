@@ -1,0 +1,19 @@
+<view wx:for="{{published_data}}" wx:key="index">
+  <van-card 
+    tag="{{item.task_type}}"
+		price='{{item.task_price}}'
+		desc="{{ item.task_description }}"
+		title="{{ item.task_title }}" 
+		thumb="{{ item.task_img_url }}" 
+    >
+    <view slot="footer">
+      <van-button 
+      data-task_id= "{{item._id}}"
+      size="mini"
+      type="danger"
+      catchtap=""
+      style="margin-right: 15rpx;" >删除</van-button>
+    </view>
+  </van-card>
+</view>
+<van-dialog id="van-dialog" />

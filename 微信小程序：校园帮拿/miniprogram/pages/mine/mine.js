@@ -1,40 +1,106 @@
-// miniprogram/pages/mine/mine.js
+const db = wx.cloud.database()
+let app = getApp();
 Page({
-    // onPullDownRefresh () {
-    //   wx.stopPullDownRefresh()
-    // },
+  // onPullDownRefresh () {
+  //   wx.stopPullDownRefresh()
+  // },
 
   /**
    * 页面的初始数据
    */
   data: {
-    login_status: {
-      islogin: false,
-      login_username: "小亮"
-    }
-
+    userInfo: {},
+    showLoginPopup: false,
+    loginStatus: false,
+    userid: null
   },
 
   login: function () {
-    wx.navigateTo({
-      url: '/pages/login/login',
+    this.setData({
+      showLoginPopup: true
     })
   },
+  check_info: function () {
+    let _this = this
+    wx.navigateTo({
+      url: '/pages/mine/personal_info/personal_info',
+      success: function(res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: _this.data.userInfo })
+      }
+    })
+  },
+  history: function () {
+    let _this = this
+    wx.navigateTo({
+      url: '/pages/mine/history/history',
+      // success: function(res) {
+      //   // 通过eventChannel向被打开页面传送数据
+      //   res.eventChannel.emit('acceptDataFromOpenerPage', { data: _this.data.userInfo })
+      // }
+    })
+  },
+  clickLogin: function () {
+    let _this = this
 
+    wx.cloud.callFunction({
+      // 要调用的云函数名称
+      name: 'login',
+      // 传递给云函数的event参数
+    }).then(res => {
+      let userid = res.result.openid
+      _this.setData({
+        userid: res.result.openid
+      })
+    }).catch(err => {
+      // handle error
+    })
+
+    wx.getUserProfile({
+      desc: '获取用户相关信息',
+      success: res => {
+        let userInfo = res.userInfo
+        db.collection("user_info").where({
+          userid: _this.data.userid
+        })
+          .get().then((res) => {
+            console.log("登录成功", res.data)
+            if (res.data.length == 0) {
+              db.collection("user_info").add({
+                data: {
+                  userid: _this.data.userid,
+                  ...userInfo
+                }
+              })
+                .then(res => {
+                  _this.setData({
+                    userInfo: res.userInfo,
+                    showLoginPopup: false,
+                    loginStatus: true
+                  })
+                })
+            }
+          })
+        _this.setData({
+          userInfo: res.userInfo,
+          showLoginPopup: false,
+          loginStatus: true
+        })
+        app.globalData.userInfo = { task_publisher: _this.data.userid, ..._this.data.userInfo}
+        app.globalData.loginStatus = true
+        console.log(app.globalData.userInfo,"???")
+        wx.setStorage({
+          key: _this.data.userid,
+          data: true
+        })
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
-    wx.getStorage({
-      key: 'login_status',
-      success (res) {
-        console.log(res.data,"res.data")
-        that.setData({
-          'login_status.islogin': res.data
-        })
-      },
-    })
+
   },
 
   /**
@@ -48,7 +114,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      userInfo: app.globalData.userInfo,
+      loginStatus: app.globalData.loginStatus
+    })
+    console.log(app.globalData.userInfo)
   },
 
   /**

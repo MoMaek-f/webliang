@@ -1,7 +1,7 @@
-// miniprogram/pages/homePage/homePage.js
 const db = wx.cloud.database()
-
+const app = getApp()
 import Dialog from '/@vant/weapp/dialog/dialog'
+import Toast from '/@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -9,10 +9,7 @@ Page({
    */
   data: {
     active: 0,
-    published_data: [
-      {message: 'foo',},
-      {message: 'bar'}
-    ],
+    published_data: [],
     // 分享数据
     showShare: false,
     options: [
@@ -45,26 +42,16 @@ Page({
 
 
   },
-  addData: function () {
-   db.collection("completed_list").add({
-    // data 字段表示需新增的 JSON 数据
-    data: {
-      desc: '帮忙取快递',
-      title: '12312',
-    }
-  })
-  .then(res => {
-    console.log(res)
-  })
-  },
   getData: function () {
-        db.collection("completed_list")
-        .get().then((res) => {
-          console.log("成功", res.data)
-          this.setData({
-            published_data: res.data 
-          })
+    db.collection("published_list").where({
+      task_status: 0
+    })
+      .get().then((res) => {
+        // console.log("成功", res.data)
+        this.setData({
+          published_data: res.data
         })
+      })
   },
   showShareAction: function () {
     this.setData({
@@ -76,19 +63,55 @@ Page({
       showShare: false
     })
   },
-  accept: function () {
-    Dialog.confirm({
-      title: '标题',
-      message: '弹窗内容',
+  accept: function (e) {
+    let _this = this
+    let task_id = e.currentTarget.dataset['task_id'];
+    if (app.globalData.loginStatus == true) {
+      Dialog.confirm({
+        title: '接受任务',
+        message: '确认接受任务？',
+      })
+        .then(() => {
+          db.collection("published_list").doc(task_id)
+            .get().then((res) => {
+              console.log(res)
+              if (res.data.task_status == 0) {
+                console.log("成功接受")
+                db.collection('published_list').doc(task_id).update({
+                  // data 传入需要局部更新的数据
+                  data: {
+                    task_status: 1,
+                    task_accepter: app.globalData.userid
+                  },
+                  success: function (res) {
+                    _this.getData()
+                  }
+                })
+              }
+            })
+        })
+        .catch(() => {
+          // on cancel
+          console.log("取消")
+        })
+    }
+    else{
+      Dialog({
+        title: '请先登录',
+        message: '登录之后才可以接受任务',
+      })
+    }
+  },
+  detail: function (e) {
+    let task_detail = e.currentTarget.dataset['task_detail'];
+    console.log(e.currentTarget.dataset)
+    Dialog.alert({
+      title: '任务详情',
+      message: task_detail,
     })
-    .then(() => {
-      // on confirm
-      console.log("确认")
-    })
-    .catch(() => {
-      // on cancel
-      console.log("取消")
-    })
+      .then(() => {
+
+      })
   },
   new_publish: function () {
     wx.navigateTo({
@@ -101,9 +124,7 @@ Page({
     })
   },
   select_date: function (value) {
-    console.log(value)
-    console.log(this.data.value1,"value1")
-    if (value.currentTarget.dataset.detail == 'select'|| value.detail== 'select') {
+    if (value.currentTarget.dataset.detail == 'select' || value.detail == 'select') {
       this.setData({
         show: true
       })
@@ -121,10 +142,10 @@ Page({
   },
   selector: function (e) {
     console.log(e.detail.name)
-    if (e.detail.name===0) {
-     wx.navigateTo({
-       url: '/pages/homePage/indexBar/indexbar',
-     })
+    if (e.detail.name === 0) {
+      wx.navigateTo({
+        url: '/pages/homePage/indexBar/indexbar',
+      })
     }
   },
   /**
@@ -149,7 +170,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getData()
   },
 
   /**
@@ -170,7 +191,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+      console.log("下拉刷新")
+      this.getData()
   },
 
   /**
