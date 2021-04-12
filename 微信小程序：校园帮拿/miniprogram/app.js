@@ -27,7 +27,6 @@ App({
       let userid = res.result.openid
       this.globalData.userid = userid;
       this.checkLoginStatus()
-      console.log(this.globalData.userid,res.result.openid)
     }).catch(err => {
       // handle error
     })

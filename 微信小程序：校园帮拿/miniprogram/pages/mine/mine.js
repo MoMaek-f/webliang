@@ -40,9 +40,18 @@ Page({
       // }
     })
   },
+  mypublished: function () {
+    let _this = this
+    wx.navigateTo({
+      url: '/pages/mine/myPublished/myPublished',
+      // success: function(res) {
+      //   // 通过eventChannel向被打开页面传送数据
+      //   res.eventChannel.emit('acceptDataFromOpenerPage', { data: _this.data.userInfo })
+      // }
+    })
+  },
   clickLogin: function () {
     let _this = this
-
     wx.cloud.callFunction({
       // 要调用的云函数名称
       name: 'login',
@@ -55,7 +64,6 @@ Page({
     }).catch(err => {
       // handle error
     })
-
     wx.getUserProfile({
       desc: '获取用户相关信息',
       success: res => {
@@ -64,7 +72,8 @@ Page({
           userid: _this.data.userid
         })
           .get().then((res) => {
-            console.log("登录成功", res.data)
+            // console.log("登录123131321", res.data, res.data.length)
+            // 如果未注册过，自动注册，并将注册信息存入数据库
             if (res.data.length == 0) {
               db.collection("user_info").add({
                 data: {
@@ -80,6 +89,27 @@ Page({
                   })
                 })
             }
+            // 如果注册过，则进行用户的数据的更新
+            else {
+              db.collection('user_info').doc(res.data[0]._id).update({
+                // data 传入需要局部更新的数据
+                data: {
+                  avatarUrl: userInfo.avatarUrl,
+                  city: userInfo.city,
+                  country: userInfo.country,
+                  gender: userInfo.gender,
+                  language: userInfo.language,
+                  nickName: userInfo.nickName,
+                  province: userInfo.province,
+                },
+                success: function(res) {
+                  // console.log(res,"更新成功")
+                },
+                complete: function(res) {
+                  // console.log(res,"更新完成")
+                }
+              })
+            }
           })
         _this.setData({
           userInfo: res.userInfo,
@@ -88,7 +118,7 @@ Page({
         })
         app.globalData.userInfo = { task_publisher: _this.data.userid, ..._this.data.userInfo}
         app.globalData.loginStatus = true
-        console.log(app.globalData.userInfo,"???")
+        // console.log(app.globalData.userInfo,"???")
         wx.setStorage({
           key: _this.data.userid,
           data: true
@@ -118,7 +148,8 @@ Page({
       userInfo: app.globalData.userInfo,
       loginStatus: app.globalData.loginStatus
     })
-    console.log(app.globalData.userInfo)
+    // console.log(app.globalData.userInfo,"123456789")
+    // console.log(this.data.userid,"this.data.userid")
   },
 
   /**

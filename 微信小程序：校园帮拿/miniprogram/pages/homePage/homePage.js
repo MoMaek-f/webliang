@@ -14,15 +14,13 @@ Page({
     showShare: false,
     options: [
       [
-        { name: '微信', icon: 'wechat' },
+        { name: '微信', icon: 'wechat', openType: 'share' },
         { name: '微博', icon: 'weibo' },
-        { name: 'QQ', icon: 'qq' },
-      ],
-      [
+        { name: 'QQ', icon: 'qq',openType: 'share'},
         { name: '复制链接', icon: 'link' },
         { name: '分享海报', icon: 'poster' },
         { name: '二维码', icon: 'qrcode' },
-      ],
+      ]
     ],// 分享数据终
 
     option1: [
@@ -103,15 +101,18 @@ Page({
     }
   },
   detail: function (e) {
-    let task_detail = e.currentTarget.dataset['task_detail'];
-    console.log(e.currentTarget.dataset)
-    Dialog.alert({
-      title: '任务详情',
-      message: task_detail,
+    wx.navigateTo({
+      url: './task_detail/task_detail?task_id=' + e.currentTarget.dataset['task_id'],
     })
-      .then(() => {
+    // let task_detail = e.currentTarget.dataset['task_detail'];
+    // console.log(e.currentTarget.dataset)
+    // Dialog.alert({
+    //   title: '任务详情',
+    //   message: task_detail,
+    // })
+    //   .then(() => {
 
-      })
+    //   })
   },
   new_publish: function () {
     wx.navigateTo({

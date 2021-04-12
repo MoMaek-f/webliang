@@ -21,7 +21,7 @@
 				size="mini"
 				type="info"
 				style="margin-right: 15rpx;"
-				data-task_detail= "{{item.task_detail}}"
+				data-task_id= "{{item._id}}"
 				catchtap="detail">详情</van-button>
 			<van-button 
 				size="mini"

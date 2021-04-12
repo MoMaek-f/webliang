@@ -1,0 +1,50 @@
+<!--miniprogram/pages/homePage/task_detail/task_detail.wxml-->
+<view>
+	<van-card 
+		tag="{{task_info.task_type}}"
+		price='{{task_info.task_price}}'
+		desc="{{ task_info.task_description }}"
+		title="{{ task_info.task_title }}" 
+		thumb="{{ task_info.task_img_url }}" 
+		>
+  </van-card>
+
+
+  <van-cell-group>
+  <van-field
+    model:value="{{task_info.task_detail}}"
+    type="textarea"
+    label="详情"
+    clearable
+    placeholder="请输入留言"
+    readonly="true"
+    autosize
+  />
+</van-cell-group>
+<van-cell-group title="至少填写一种联系方式">
+  <van-field
+    model:value="{{ task_contact_qq }}"
+    required
+    clearable
+    label="QQ"
+    placeholder="请输入用户名"
+    bind:click-icon="onClickIcon"
+  />
+  <van-field
+  model:value="{{ task_contact_wechat }}"
+    required
+    clearable
+    label="微信"
+    placeholder="请输入用户名"
+    bind:click-icon="onClickIcon"
+  />
+  <van-field
+  model:value="{{ task_contact_tel }}"
+    required
+    clearable
+    label="手机号"
+    placeholder="请输入用户名"
+    bind:click-icon="onClickIcon"
+  />
+</van-cell-group>
+</view>

@@ -1,18 +1,31 @@
-// miniprogram/pages/task_detail/task_detail.js
+// miniprogram/pages/mine/myPublished/mypublished.js
+const db = wx.cloud.database()
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    published_data: [],
+    userid: ''
   },
-
+  getData: function () {
+    db.collection("published_list").where({
+      task_publisher: app.globalData.userid
+    })
+      .get().then((res) => {
+        // console.log("成功", res.data)
+        this.setData({
+          published_data: res.data
+        })
+      })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getData()
   },
 
   /**

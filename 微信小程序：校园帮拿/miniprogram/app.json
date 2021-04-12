@@ -4,10 +4,11 @@
     "pages/new_publish/new_publish",
     "pages/mine/mine",
     "pages/accept/accept",
-    "pages/task_detail/task_detail",
     "pages/homePage/indexBar/indexbar",
     "pages/mine/personal_info/personal_info",
-    "pages/mine/history/history"
+    "pages/mine/history/history",
+    "pages/homePage/task_detail/task_detail",
+    "pages/mine/myPublished/myPublished"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
