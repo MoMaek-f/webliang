@@ -1,8 +1,8 @@
-<!-- <van-tabs active="{{ active }}" bind:click="selector">
+<van-tabs active="{{ active }}" bind:click="selector">
   <van-tab title="{{true ? '选择学校' : '选好了'}}"></van-tab>
   <van-tab title="{{true ? '选择时间' : '选好了'}}"></van-tab>
   <van-tab title="{{true ? '搜索' : '选好了'}}"></van-tab>
-</van-tabs> -->
+</van-tabs>
 
 <view wx:for="{{published_data}}" wx:key="index">
 	<van-card 

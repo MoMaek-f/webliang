@@ -5,18 +5,28 @@
   <van-tab title="{{true ? '搜索' : '选好了'}}"></van-tab>
 </van-tabs>
 <!-- 索引列表 -->
-<van-index-bar>
-  <view>
-    <van-index-anchor index="A" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
+<van-index-bar index-list="{{ indexList }}">
+  <view wx:for="{{indexList}}" wx:key="index">
+    <van-index-anchor index="{{item}}" />
+    <view wx:for="{{collageList}}" wx:key="index">
+      <van-cell title="{{item}}" />
+    </view>
   </view>
-
+<!-- 
   <view>
     <van-index-anchor index="B" />
     <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="C" />
     <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="D" />
+    <van-cell title="东华理工大学" />
+  </view>
+  <view>
+    <van-index-anchor index="E" />
     <van-cell title="文本" />
   </view>
   <view>
@@ -42,24 +52,6 @@
     <van-cell title="文本" />
     <van-cell title="文本" />
     <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="E" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="E" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="E" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
+  </view> -->
 
 </van-index-bar>
