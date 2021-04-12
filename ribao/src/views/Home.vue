@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-<div style="display: flex; width: 100%; margin: 10px;">
+<div style="display: flex; width: 98%; margin: 10px;">
   <van-popup
    v-model="show"
    position="bottom"
@@ -15,10 +15,10 @@
 />
   </van-popup>
 <div class="data-filter">
-    <label for="startTime">从</label>
+    <label for="startTime" style=""> 从 </label>
     <input id="startTime" type="text" class="filter-input" placeholder="开始时间" @click="startTime">
     
-    <label for="endTime" > 到</label>
+    <label for="endTime" > 到 </label>
     <input id="endTime" type="text" class="filter-input"  placeholder="结束时间" @click="endTime"> 
     
 </div>
@@ -41,7 +41,8 @@
           </table>
         </div>
       </van-tab>
-      <van-tab title="净收入统计">    <div class="vant-table">
+      <van-tab title="净收入统计">  
+        <div class="vant-table">
           <table cellspacing="0" style="width: 100%" class="table">
             <tr>
               <th class="th" v-for="(item, index) in option.column" :key="index">
@@ -124,10 +125,10 @@ export default {
 .vant-table {
   .table {
     border-radius: 0.185185rem;
+    padding: 5px;
     .th {
       height: 1.074074rem;
       line-height: 1.074074rem;
-      // background-color: #393943;
       text-align: center;
       border-top-left-radius: 0.185185rem;
       border-top-right-radius: 0.185185rem;
@@ -146,9 +147,19 @@ export default {
 }
 .data-filter {
   display:flex;
-  width: 70%
+  width: 70%;
+  label {
+    line-height: 32px;
+    margin: 0 5px;
+  }
 }
 .filter-input {
-  width: 100px
+
+  display: flex;
+  width: 100px;
+  height: 28px;
+  background: #EEEEEE;
+  border: 1px solid #CCCCCC;
+  border-radius: 3px;
 }
 </style>

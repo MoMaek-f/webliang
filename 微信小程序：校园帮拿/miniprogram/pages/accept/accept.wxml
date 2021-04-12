@@ -1,0 +1,9 @@
+<view wx:for="{{published_data}}" wx:key="index">
+  <van-card price='{{item.price}}' desc="{{ item.desc }}" title="{{ item.title }}" thumb="">
+    <view slot="footer">
+      <van-button size="mini" type="danger" catchtap="giveup_task">放弃</van-button>
+      <van-button size="mini" type="primary" catchtap="completed_task">完成</van-button>
+    </view>
+  </van-card>
+</view>
+<van-dialog id="van-dialog" />

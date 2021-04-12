@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/mine/mine",
+    "pages/login/login",
+    "pages/homePage/homePage",
+    "pages/accept/accept",
+    "pages/new_publish/new_publish",
+    "pages/task_detail/task_detail",
+    "pages/homePage/indexBar/indexbar",
+    "pages/login/signup/signup"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "校园帮拿",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/homePage/homePage",
+        "text": "任务大厅",
+        "iconPath": "pages/icon/published.png",
+        "selectedIconPath": "pages/icon/published.png"
+      },
+      {
+        "pagePath": "pages/accept/accept",
+        "text": "已接受",
+        "iconPath": "pages/icon/ongoing.png",
+        "selectedIconPath": "pages/icon/ongoing.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "pages/icon/me.png",
+        "selectedIconPath": "pages/icon/me.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-share-sheet": "@vant/weapp/share-sheet/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-calendar": "@vant/weapp/calendar/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-index-bar": "@vant/weapp/index-bar/index",
+    "van-index-anchor": "@vant/weapp/index-anchor/index"
+  }
+}

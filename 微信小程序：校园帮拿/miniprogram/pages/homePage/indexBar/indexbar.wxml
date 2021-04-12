@@ -1,0 +1,65 @@
+<!--miniprogram/pages/homePage/indexBar/indexbar.wxml-->
+<van-tabs active="{{ active }}" bind:click="selector">
+  <van-tab title="{{true ? '选择学校' : '选好了'}}"></van-tab>
+  <van-tab title="{{true ? '选择时间' : '选好了'}}"></van-tab>
+  <van-tab title="{{true ? '搜索' : '选好了'}}"></van-tab>
+</van-tabs>
+<!-- 索引列表 -->
+<van-index-bar>
+  <view>
+    <van-index-anchor index="A" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+
+  <view>
+    <van-index-anchor index="B" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="E" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="E" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="E" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="E" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="E" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="E" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="E" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+
+</van-index-bar>
