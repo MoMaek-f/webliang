@@ -81,13 +81,24 @@ Page({
         console.log("取消")
       })
   },
+  detail: function (e) {
+    wx.navigateTo({
+      url: '/pages/homePage/task_detail/task_detail?task_id=' + e.currentTarget.dataset['task_id'],
+    })
+  },
   onPullDownRefresh: function () {
-    this.getData()
+    if (app.globalData.loginStatus == true){
+      this.getData()
+    }
   },
   onLoad: function () {
-    this.getData()
+    if (app.globalData.loginStatus == true){
+      this.getData()
+    }
   },
   onShow: function () {
-    this.getData()
+    if (app.globalData.loginStatus == true){
+      this.getData()
+    }
   }
 })

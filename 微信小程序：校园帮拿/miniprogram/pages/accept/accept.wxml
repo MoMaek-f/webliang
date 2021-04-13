@@ -4,7 +4,9 @@
 		price='{{item.task_price}}'
 		desc="{{ item.task_description }}"
 		title="{{ item.task_title }}" 
-		thumb="{{ item.task_img_url }}" 
+    thumb="{{ item.task_img_url }}" 
+    data-task_id= "{{item._id}}"
+    bindtap="detail"
     >
     <view slot="footer">
       <van-button 

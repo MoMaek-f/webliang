@@ -17,7 +17,7 @@
     autosize
   />
   <van-field
-    model:value="{{task_info.task_status != 0 ? userInfo.gender == 1 ? '进行中' : '已完成' : '待接受'}}"
+    model:value="{{task_info.task_status != 0 ? task_info.task_status == 1 ? '进行中' : '已完成' : '待接受'}}"
     type="textarea"
     label="任务状态"
     clearable

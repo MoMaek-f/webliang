@@ -11,7 +11,8 @@
 			<van-button 
 				size="mini"
 				type="primary"
-				data-task_id= "{{task_info._id}}"
+        data-task_id= "{{task_info._id}}"
+        data-task_publisher= "{{task_info.task_publisher}}"
 				catchtap="accept">确认接受</van-button>
 		</view>
   </van-card>
@@ -28,26 +29,46 @@
     autosize
   />
 </van-cell-group>
+<van-cell-group title="发布者联系方式">
+  <van-field
+    value="{{ task_info.task_contact_qq }}"
+    clearable
+    label="QQ"
+    readonly
+    bind:click-icon="onClickIcon"
+  />
+  <van-field
+    value="{{task_info.task_contact_wechat }}"
+    clearable
+    label="微信"
+    readonly
+    bind:click-icon="onClickIcon"
+  />
+  <van-field
+    value="{{ task_info.task_contact_tel }}"
+    clearable
+    label="手机号"
+    readonly
+    bind:click-icon="onClickIcon"
+  />
+</van-cell-group>
 <van-cell-group title="至少填写一种联系方式">
   <van-field
-    model:value="{{ task_contact_qq }}"
-    required
+    model:value="{{ task_accepter_contact_qq }}"
     clearable
     label="QQ"
     placeholder="请输入用户名"
     bind:click-icon="onClickIcon"
   />
   <van-field
-  model:value="{{ task_contact_wechat }}"
-    required
+  model:value="{{task_accepter_contact_wechat }}"
     clearable
     label="微信"
     placeholder="请输入用户名"
     bind:click-icon="onClickIcon"
   />
   <van-field
-  model:value="{{ task_contact_tel }}"
-    required
+  model:value="{{ task_accepter_contact_tel }}"
     clearable
     label="手机号"
     placeholder="请输入用户名"

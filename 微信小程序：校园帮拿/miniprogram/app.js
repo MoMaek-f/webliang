@@ -30,28 +30,6 @@ App({
     }).catch(err => {
       // handle error
     })
-  //   wx.login({
-  //     success: (res) => {
-  //       if (res.code) {    // res.code 是临时登录凭证
-  //         wx.request({
-  //           url: 'https://api.weixin.qq.com/sns/jscode2session',
-  //           data: {
-  //             appid:'wx368d3c80463c7ef8',
-  //             secret: '2a4d4e6459ace20a22991edaebab5e55',
-  //             js_code: res.code,
-  //             grant_type: 'authorization_code'
-  //           },
-  //           success: res => {
-  //             let userid = res.data.openid
-  //             this.globalData.userid = userid;
-  //             this.checkLoginStatus()
-  //           }
-  //         })
-  //       } else {
-  //         console.log('登录失败！' + res.errMsg)
-  //       }
-  //     }
-  //   })
   },
   checkLoginStatus: function () {
     const db = wx.cloud.database()
@@ -64,12 +42,6 @@ App({
             userid: _this.globalData.userid
           })
             .get().then((res) => {
-              // _this.setData({
-              //   userInfo: res.data[0],
-              //   showLoginPopup: false,
-              //   loginStatus: true
-              // })
-              console.log(res.data[0])
               _this.globalData.userInfo = res.data[0]
               _this.globalData.loginStatus = true
             })
