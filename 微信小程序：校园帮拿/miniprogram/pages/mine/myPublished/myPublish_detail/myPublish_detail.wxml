@@ -1,4 +1,3 @@
-<!--miniprogram/pages/homePage/task_detail/task_detail.wxml-->
 <view>
 	<van-card 
 		tag="{{task_info.task_type}}"
@@ -6,54 +5,47 @@
 		desc="{{ task_info.task_description }}"
 		title="{{ task_info.task_title }}" 
 		thumb="{{ task_info.task_img_url }}" 
-    >
-    <view slot="footer">
-			<van-button 
-				size="mini"
-				type="primary"
-				data-task_id= "{{task_info._id}}"
-				catchtap="accept">确认接受</van-button>
-		</view>
+		>
   </van-card>
-
-
   <van-cell-group>
   <van-field
     model:value="{{task_info.task_detail}}"
     type="textarea"
     label="详情"
     clearable
-    placeholder="任务详情描述"
+    readonly="true"
+    autosize
+  />
+  <van-field
+    model:value="{{task_info.task_status != 0 ? userInfo.gender == 1 ? '进行中' : '已完成' : '待接受'}}"
+    type="textarea"
+    label="任务状态"
+    clearable
     readonly="true"
     autosize
   />
 </van-cell-group>
-<van-cell-group title="至少填写一种联系方式">
+<van-cell-group title="接受者联系方式">
   <van-field
     model:value="{{ task_contact_qq }}"
-    required
     clearable
     label="QQ"
-    placeholder="请输入用户名"
+    readonly
     bind:click-icon="onClickIcon"
   />
   <van-field
   model:value="{{ task_contact_wechat }}"
-    required
     clearable
     label="微信"
-    placeholder="请输入用户名"
+    readonly
     bind:click-icon="onClickIcon"
   />
   <van-field
   model:value="{{ task_contact_tel }}"
-    required
     clearable
     label="手机号"
-    placeholder="请输入用户名"
+    readonly
     bind:click-icon="onClickIcon"
   />
 </van-cell-group>
 </view>
-<!-- 弹窗 -->
-<van-dialog id="van-dialog" />

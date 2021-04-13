@@ -1,24 +1,25 @@
-// miniprogram/pages/homePage/indexBar/indexbar.js
+const db = wx.cloud.database()
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    indexList: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
-    collageList: 
-      {
-        'A' : [],
-        'D' : ["东华理工大学"],
-        'J' : ["江西财经大学", "江西理工大学"],
-        'H' : ["华东交通大学"]
-      }
+    task_info: []
   },
-
+  getdata: function () {
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      console.log(options)
+      db.collection("published_list").doc(options.task_id).get().then((res) => {
+        this.setData({
+          task_info: res.data
+        })
+      })
   },
 
   /**
@@ -32,7 +33,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getdata()
   },
 
   /**

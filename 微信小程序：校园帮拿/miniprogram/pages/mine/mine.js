@@ -1,5 +1,6 @@
 const db = wx.cloud.database()
 let app = getApp();
+import Dialog from '/@vant/weapp/dialog/dialog'
 Page({
   // onPullDownRefresh () {
   //   wx.stopPullDownRefresh()
@@ -20,35 +21,64 @@ Page({
       showLoginPopup: true
     })
   },
+  onClose: function () {
+    this.setData({
+      showLoginPopup: false
+    })
+  },
   check_info: function () {
     let _this = this
-    wx.navigateTo({
-      url: '/pages/mine/personal_info/personal_info',
-      success: function(res) {
-        // 通过eventChannel向被打开页面传送数据
-        res.eventChannel.emit('acceptDataFromOpenerPage', { data: _this.data.userInfo })
-      }
-    })
+    if (this.data.loginStatus==true) {
+      wx.navigateTo({
+        url: '/pages/mine/personal_info/personal_info',
+        success: function(res) {
+          // 通过eventChannel向被打开页面传送数据
+          res.eventChannel.emit('acceptDataFromOpenerPage', { data: _this.data.userInfo })
+        }
+      })
+    }
+    else {
+      Dialog({
+        title: '请先登录',
+        message: '请登录之后查看',
+      })
+    }
   },
   history: function () {
     let _this = this
-    wx.navigateTo({
-      url: '/pages/mine/history/history',
-      // success: function(res) {
-      //   // 通过eventChannel向被打开页面传送数据
-      //   res.eventChannel.emit('acceptDataFromOpenerPage', { data: _this.data.userInfo })
-      // }
-    })
+    if (this.data.loginStatus==true) {
+      wx.navigateTo({
+        url: '/pages/mine/history/history',
+        // success: function(res) {
+        //   // 通过eventChannel向被打开页面传送数据
+        //   res.eventChannel.emit('acceptDataFromOpenerPage', { data: _this.data.userInfo })
+        // }
+      })
+    }
+    else {
+      Dialog({
+        title: '请先登录',
+        message: '请登录之后查看',
+      })
+    }
   },
   mypublished: function () {
     let _this = this
-    wx.navigateTo({
-      url: '/pages/mine/myPublished/myPublished',
-      // success: function(res) {
-      //   // 通过eventChannel向被打开页面传送数据
-      //   res.eventChannel.emit('acceptDataFromOpenerPage', { data: _this.data.userInfo })
-      // }
-    })
+    if (this.data.loginStatus==true){
+      wx.navigateTo({
+        url: '/pages/mine/myPublished/myPublished',
+        // success: function(res) {
+        //   // 通过eventChannel向被打开页面传送数据
+        //   res.eventChannel.emit('acceptDataFromOpenerPage', { data: _this.data.userInfo })
+        // }
+      })
+    }
+    else {
+      Dialog({
+        title: '请先登录',
+        message: '请登录之后查看',
+      })
+    }
   },
   clickLogin: function () {
     let _this = this

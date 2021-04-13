@@ -4,15 +4,18 @@
 		price='{{item.task_price}}'
 		desc="{{ item.task_description }}"
 		title="{{ item.task_title }}" 
-		thumb="{{ item.task_img_url }}" 
+    thumb="{{ item.task_img_url }}" 
+    data-task_id="{{item._id}}"
+    bindtap="myPublish_detail"
     >
     <view slot="footer">
       <van-button 
       data-task_id= "{{item._id}}"
+      data-task_status= "{{item.task_status}}"
       size="mini"
       type="danger"
-      catchtap=""
-      style="margin-right: 15rpx;" >删除</van-button>
+      catchtap="undo"
+      style="margin-right: 15rpx;" >取消任务</van-button>
     </view>
   </van-card>
 </view>

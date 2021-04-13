@@ -18,7 +18,7 @@
 </van-cell-group>
 
 <van-cell-group title=" ">
-  <van-cell title="我的记录" value="历史记录" is-link  bindtap="history"/>
+  <van-cell title="我完成的" value="历史记录" is-link  bindtap="history"/>
   <van-cell title="我发布的" value="任务详情" is-link  bindtap="mypublished"/>
 </van-cell-group>
 <van-cell-group title=" ">
@@ -57,3 +57,6 @@
 
   </view>
 </van-popup>
+
+<!-- 弹窗 -->
+<van-dialog id="van-dialog" />

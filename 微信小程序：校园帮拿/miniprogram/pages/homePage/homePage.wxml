@@ -1,8 +1,8 @@
-<van-tabs active="{{ active }}" bind:click="selector">
+<!-- <van-tabs active="{{ active }}" bind:click="selector">
   <van-tab title="{{true ? '选择学校' : '选好了'}}"></van-tab>
   <van-tab title="{{true ? '选择时间' : '选好了'}}"></van-tab>
   <van-tab title="{{true ? '搜索' : '选好了'}}"></van-tab>
-</van-tabs>
+</van-tabs> -->
 
 <view wx:for="{{published_data}}" wx:key="index">
 	<van-card 
@@ -11,6 +11,8 @@
 		desc="{{ item.task_description }}"
 		title="{{ item.task_title }}" 
 		thumb="{{ item.task_img_url }}" 
+		data-task_id= "{{item._id}}"
+		bindtap="detail"
 		>
 		<view slot="footer">
 			<van-button 
@@ -23,11 +25,11 @@
 				style="margin-right: 15rpx;"
 				data-task_id= "{{item._id}}"
 				catchtap="detail">详情</van-button>
-			<van-button 
+			<!-- <van-button 
 				size="mini"
 				type="primary"
 				data-task_id= "{{item._id}}"
-				catchtap="accept">接受</van-button>
+				catchtap="accept">接受</van-button> -->
 		</view>
 	</van-card>
 </view>
@@ -37,9 +39,9 @@
 
 <!-- 新发布 -->
 <view
-		style="position:fixed; bottom:50rpx; right: 20px; border-radius: 50%; width:50px; height: 50px; background-color: #FFFFFF;"
+		style="position:fixed; bottom:50rpx; left: 50px; border-radius: 50%; width:50px; height: 50px; background-color: #FFFFFF;"
 		bindtap="new_publish">
-		<van-icon name="plus" color="green" size="50px" style="position:fixed; bottom:50rpx; right: 20px;" />
+		<van-icon name="plus" color="green" size="50px" style="position:fixed; bottom:50rpx; left: 50px;" />
 	</view>
 
 

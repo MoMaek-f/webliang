@@ -30,6 +30,9 @@ Page({
         task_contact_tel:     this.data.task_contact_tel,
         task_status: 0,
         task_accepter: '',
+        task_accepter_contact_qq: '',
+        task_accepter_contact_wechat: '',
+        task_accepter_contact_tel: '',
         task_publisher: app.globalData.userInfo.userid,
         task_img_url: app.globalData.userInfo.avatarUrl
       }
@@ -39,22 +42,46 @@ Page({
       })
   },
   confirm_publish: function () {
-    if(this.data.task_title!=='') {
+    if(this.data.task_title === '') {
+      Toast({
+        message: '请填写标题',
+        forbidClick: true,
+      });
+    }
+    else if(this.data.task_description === '') {
+      Toast({
+        message: '请填写任务时间',
+        forbidClick: true,
+      });
+    }
+    else if(this.data.task_detail === '') {
+      Toast({
+        message: '请填写任务详情',
+        forbidClick: true,
+      });
+    }
+    else if(this.data.task_price === '') {
+      Toast({
+        message: '请填写打赏价格',
+        forbidClick: true,
+      });
+    }
+    else if(this.data.task_contact_qq ==='' && this.data.task_contact_wechat ==='' && this.data.task_contact_tel==='') {
+      Toast({
+        message: '请填写至少一种联系方式',
+        forbidClick: true,
+      });
+    }
+    else{
       this.addData()
       Toast.loading({
-        message: '已发布',
+        message: '发布中',
         forbidClick: true,
         onClose: () => {
           wx.navigateBack({   //然后返回上一个页面
             delta: 1
           })      
         },
-      });
-    }
-    else{
-      Toast.loading({
-        message: '请填写信息',
-        forbidClick: true,
       });
     }
   },

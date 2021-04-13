@@ -5,8 +5,8 @@
   title="性别" 
   value="{{ userInfo.gender != 0 ? userInfo.gender == 1 ?'男' : '女' : '未知'}} " 
  />
-  <van-cell title="城市" value="{{userInfo.province}}" />
-  <van-cell title="手机号" value="{{userInfo.nickName}}" />
+  <van-cell title="城市" value="{{userInfo.province}}"/>
+  <!-- <van-cell title="手机号" value="{{userInfo.nickName}}" /> -->
 </van-cell-group>
 <!-- 退出登录 -->
 <view style="display: flex; justify-content: center;">

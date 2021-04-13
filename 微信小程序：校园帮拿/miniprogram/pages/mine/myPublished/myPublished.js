@@ -1,6 +1,7 @@
 // miniprogram/pages/mine/myPublished/mypublished.js
 const db = wx.cloud.database()
 const app = getApp()
+import Dialog from '/@vant/weapp/dialog/dialog'
 Page({
 
   /**
@@ -20,6 +21,32 @@ Page({
           published_data: res.data
         })
       })
+  },
+  undo: function(e) {
+    let task_id = e.currentTarget.dataset['task_id'];
+    let task_status = e.currentTarget.dataset['task_status'];
+    if(task_status != 0) {
+      Dialog({
+        title: '不可删除此任务',
+        message: '只有未被接受的任务可执行删除，已接受但尚未完成的任务请联系接受者取消',
+      })
+    }
+    else{
+      Dialog.confirm({
+        title: '取消任务',
+        message: '取消后他们将无法看见此任务，确认取消任务？',
+      }).then(()=> {
+        db.collection("published_list").doc(task_id).remove().then((res) => {
+            this.getData()
+          })
+      })
+    }
+  },
+  myPublish_detail: function (e) {
+    console.log(e.currentTarget)
+    wx.navigateTo({
+      url: '/pages/mine/myPublished/myPublish_detail/myPublish_detail?task_id='+ e.currentTarget.dataset['task_id'],
+    })
   },
   /**
    * 生命周期函数--监听页面加载

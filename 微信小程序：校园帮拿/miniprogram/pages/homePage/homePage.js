@@ -14,11 +14,8 @@ Page({
     showShare: false,
     options: [
       [
-        { name: '微信', icon: 'wechat', openType: 'share' },
-        { name: '微博', icon: 'weibo' },
-        { name: 'QQ', icon: 'qq',openType: 'share'},
+        { name: '微信好友', icon: 'wechat', openType: 'share' },
         { name: '复制链接', icon: 'link' },
-        { name: '分享海报', icon: 'poster' },
         { name: '二维码', icon: 'qrcode' },
       ]
     ],// 分享数据终
@@ -37,8 +34,6 @@ Page({
 
     show: false,
     category_active: 'published',
-
-
   },
   getData: function () {
     db.collection("published_list").where({
