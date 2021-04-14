@@ -19,6 +19,8 @@ Page({
     let task_id = e.currentTarget.dataset['task_id'];
     let task_publisher = e.currentTarget.dataset['task_publisher'];
     if (app.globalData.loginStatus == true) {
+      console.log(app.globalData.userInfo.userid)
+      console.log(task_publisher)
       if (app.globalData.userInfo.userid != task_publisher) {
         Dialog.confirm({
           title: '接受任务',

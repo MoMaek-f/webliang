@@ -146,7 +146,7 @@ Page({
           showLoginPopup: false,
           loginStatus: true
         })
-        app.globalData.userInfo = { task_publisher: _this.data.userid, ..._this.data.userInfo}
+        app.globalData.userInfo = { task_publisher: _this.data.userid, ...res.userInfo}
         app.globalData.loginStatus = true
         // console.log(app.globalData.userInfo,"???")
         wx.setStorage({
