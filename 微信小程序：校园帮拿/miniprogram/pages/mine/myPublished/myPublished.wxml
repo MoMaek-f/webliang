@@ -19,4 +19,5 @@
     </view>
   </van-card>
 </view>
+<van-empty wx:if="{{published_data.length == 0}}" description="没有接受任务哦" />
 <van-dialog id="van-dialog" />

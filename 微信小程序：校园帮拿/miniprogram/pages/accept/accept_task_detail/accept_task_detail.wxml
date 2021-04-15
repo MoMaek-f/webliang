@@ -7,17 +7,15 @@
 		title="{{ task_info.task_title }}" 
 		thumb="{{ task_info.task_img_url }}" 
     >
-    <view slot="footer">
+    <!-- <view slot="footer">
 			<van-button 
 				size="mini"
 				type="primary"
         data-task_id= "{{task_info._id}}"
         data-task_publisher= "{{task_info.task_publisher}}"
 				catchtap="accept">确认接受</van-button>
-		</view>
+		</view> -->
   </van-card>
-
-
   <van-cell-group>
   <van-field
     model:value="{{task_info.task_detail}}"
@@ -29,26 +27,26 @@
     autosize
   />
 </van-cell-group>
-<van-cell-group title="至少填写一种联系方式，(我们将保证仅有发布者可见，且在任务完成后删除">
+<van-cell-group title="发布者联系方式">
   <van-field
-    model:value="{{ task_accepter_contact_qq }}"
+    value="{{ task_info.task_contact_qq }}"
     clearable
     label="QQ"
-    placeholder="请输入用户名"
+    readonly
     bind:click-icon="onClickIcon"
   />
   <van-field
-  model:value="{{task_accepter_contact_wechat }}"
+    value="{{task_info.task_contact_wechat }}"
     clearable
     label="微信"
-    placeholder="请输入用户名"
+    readonly
     bind:click-icon="onClickIcon"
   />
   <van-field
-  model:value="{{ task_accepter_contact_tel }}"
+    value="{{ task_info.task_contact_tel }}"
     clearable
     label="手机号"
-    placeholder="请输入用户名"
+    readonly
     bind:click-icon="onClickIcon"
   />
 </van-cell-group>

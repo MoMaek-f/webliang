@@ -88,6 +88,7 @@ Page({
       // 传递给云函数的event参数
     }).then(res => {
       let userid = res.result.openid
+      app.globalData.userid = userid
       _this.setData({
         userid: res.result.openid
       })

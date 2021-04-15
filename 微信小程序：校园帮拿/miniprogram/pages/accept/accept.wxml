@@ -1,4 +1,4 @@
-<view wx:for="{{published_data}}" wx:key="index">
+<view wx:if="{{published_data.length != 0}}" wx:for="{{published_data}}" wx:key="index">
   <van-card 
     tag="{{item.task_type}}"
 		price='{{item.task_price}}'
@@ -23,4 +23,6 @@
     </view>
   </van-card>
 </view>
+<van-empty wx:if="{{published_data.length == 0}}" description="没有接受任务哦" />
+<!-- <van-empty wx:if="published_data==[]" description="" /> -->
 <van-dialog id="van-dialog" />

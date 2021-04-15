@@ -9,7 +9,8 @@
     "pages/mine/history/history",
     "pages/homePage/task_detail/task_detail",
     "pages/mine/myPublished/myPublished",
-    "pages/mine/myPublished/myPublish_detail/myPublish_detail"
+    "pages/mine/myPublished/myPublish_detail/myPublish_detail",
+    "pages/accept/accept_task_detail/accept_task_detail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

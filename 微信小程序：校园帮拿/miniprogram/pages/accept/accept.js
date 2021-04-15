@@ -83,7 +83,7 @@ Page({
   },
   detail: function (e) {
     wx.navigateTo({
-      url: '/pages/homePage/task_detail/task_detail?task_id=' + e.currentTarget.dataset['task_id'],
+      url: '/pages/accept/accept_task_detail/accept_task_detail?task_id=' + e.currentTarget.dataset['task_id'],
     })
   },
   onPullDownRefresh: function () {

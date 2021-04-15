@@ -6,14 +6,7 @@
 		title="{{ item.task_title }}" 
 		thumb="{{ item.task_img_url }}" 
     >
-    <!-- <view slot="footer">
-      <van-button 
-      data-task_id= "{{item._id}}"
-      size="mini"
-      type="danger"
-      catchtap=""
-      style="margin-right: 15rpx;" >删除</van-button>
-    </view> -->
   </van-card>
 </view>
+<van-empty wx:if="{{published_data.length == 0}}" description="没有完成任务哦" />
 <van-dialog id="van-dialog" />

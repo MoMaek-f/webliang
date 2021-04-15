@@ -42,17 +42,31 @@ Page({
       })
   },
   confirm_publish: function () {
+    let numReg = /^[0-9]+(\.[0-9]{1,2})?$/ // 验证是否是数字
+    let qqReg = /^\d{5,10}$/
+    let telReg = /^\d{11}$/
+    // let timeReg = new RegExp('^\d{4}-\d{1,2}-\d{1,2}')
+    let timeReg = /^\d{4}-\d{1,2}-\d{1,2}/  //验证时间格式
     if(this.data.task_title === '') {
       Toast({
         message: '请填写标题',
         forbidClick: true,
       });
     }
-    else if(this.data.task_description === '') {
-      Toast({
+    else if(!timeReg.test(this.data.task_description) || this.data.task_description === '') {
+      console.log(timeReg.test(this.data.task_description))
+     if (this.data.task_description === '') {
+        Toast({
         message: '请填写任务时间',
         forbidClick: true,
       });
+    }
+      else if (!timeReg.test(this.data.task_description)) {
+        Toast({
+          message: '请正确填写任务时间',
+          forbidClick: true,
+        });
+      }
     }
     else if(this.data.task_detail === '') {
       Toast({
@@ -60,17 +74,39 @@ Page({
         forbidClick: true,
       });
     }
-    else if(this.data.task_price === '') {
-      Toast({
-        message: '请填写打赏价格',
-        forbidClick: true,
-      });
+    else if(!numReg.test(this.data.task_price) || this.data.task_price === '') {
+      if(!numReg.test(this.data.task_price)) {
+        Toast({
+          message: '请正确填写打赏价格(数字)',
+          forbidClick: true,
+        });
+      }
+      else{
+        Toast({
+          message: '请填写打赏价格',
+          forbidClick: true,
+        });
+      }
     }
-    else if(this.data.task_contact_qq ==='' && this.data.task_contact_wechat ==='' && this.data.task_contact_tel==='') {
+    else if((!qqReg.test(this.data.task_contact_qq)) && this.data.task_contact_wechat ==='' && (!telReg.test(this.data.task_contact_tel))) {
+    //  if (!qqReg.test(this.data.task_contact_qq)) {
+    //    Toast({
+    //      message: '正确填写QQ号',
+    //      forbidClick: true,
+    //    });
+    //  }
+     if (!telReg.test(this.data.task_contact_tel)) {
+       Toast({
+         message: '正确填写手机号',
+         forbidClick: true,
+       });
+     }
+     else{
       Toast({
         message: '请填写至少一种联系方式',
         forbidClick: true,
       });
+     }
     }
     else{
       this.addData()
