@@ -27,21 +27,21 @@
 </van-cell-group>
 <van-cell-group title="接受者联系方式">
   <van-field
-    model:value="{{ task_contact_qq }}"
+    model:value="{{ task_info.task_accepter_contact_qq }}"
     clearable
     label="QQ"
     readonly
     bind:click-icon="onClickIcon"
   />
   <van-field
-  model:value="{{ task_contact_wechat }}"
+  model:value="{{ task_info.task_accepter_contact_wechat }}"
     clearable
     label="微信"
     readonly
     bind:click-icon="onClickIcon"
   />
   <van-field
-  model:value="{{ task_contact_tel }}"
+  model:value="{{ task_info.task_accepter_contact_tel }}"
     clearable
     label="手机号"
     readonly

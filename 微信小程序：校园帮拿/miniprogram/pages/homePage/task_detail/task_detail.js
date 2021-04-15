@@ -20,8 +20,9 @@ Page({
     let task_id = e.currentTarget.dataset['task_id'];
     let task_publisher = e.currentTarget.dataset['task_publisher'];
     if (app.globalData.loginStatus == true) {
-      console.log(app.globalData.userid)
-      console.log(task_publisher)
+      if(  this.data.task_accepter_contact_qq== ''&& this.data.task_accepter_contact_wechat==''&& this.data.task_accepter_contact_tel== '') {
+
+ 
       if (app.globalData.userid != task_publisher) {
         Dialog.confirm({
           title: '接受任务',
@@ -55,6 +56,7 @@ Page({
             console.log("取消")
           })
       }
+    }
       else {
         Dialog({
           title: '不可接受此任务',
