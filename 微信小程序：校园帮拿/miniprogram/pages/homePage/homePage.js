@@ -208,6 +208,7 @@ Page({
   onPullDownRefresh: function () {
       console.log("下拉刷新")
       this.getData()
+      wx.stopPullDownRefresh();
   },
 
   /**

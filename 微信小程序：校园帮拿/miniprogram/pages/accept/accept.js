@@ -89,6 +89,7 @@ Page({
   onPullDownRefresh: function () {
     if (app.globalData.loginStatus == true){
       this.getData()
+      wx.stopPullDownRefresh();
     }
   },
   onLoad: function () {

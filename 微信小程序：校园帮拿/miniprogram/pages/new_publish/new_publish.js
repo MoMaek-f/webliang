@@ -45,7 +45,7 @@ Page({
     let numReg = /^[0-9]+(\.[0-9]{1,2})?$/ // 验证是否是数字
     let qqReg = /^\d{5,10}$/
     let telReg = /^\d{11}$/
-    // let timeReg = new RegExp('^\d{4}-\d{1,2}-\d{1,2}')
+    let wechatReg =/[^\u4e00-\u9fa5]+$/
     let timeReg = /^\d{4}-\d{1,2}-\d{1,2}/  //验证时间格式
     if(this.data.task_title === '') {
       Toast({
@@ -88,25 +88,32 @@ Page({
         });
       }
     }
-    else if((!qqReg.test(this.data.task_contact_qq)) && this.data.task_contact_wechat ==='' && (!telReg.test(this.data.task_contact_tel))) {
-    //  if (!qqReg.test(this.data.task_contact_qq)) {
-    //    Toast({
-    //      message: '正确填写QQ号',
-    //      forbidClick: true,
-    //    });
-    //  }
-     if (!telReg.test(this.data.task_contact_tel)) {
+    else if((!qqReg.test(this.data.task_contact_qq)) && (!wechatReg.test(this.data.task_contact_wechat))  && (!telReg.test(this.data.task_contact_tel))) {
+      if (this.data.task_contact_qq=='' && this.data.task_contact_wechat=='' && this.data.task_contact_tel==''){
+        Toast({
+          message: '请填写至少一种联系方式',
+          forbidClick: true,
+        });
+       }
+     else if (this.data.task_contact_qq&&!qqReg.test(this.data.task_contact_qq)) {
+       Toast({
+         message: '正确填写QQ号',
+         forbidClick: true,
+       });
+     }
+     else if (this.data.task_contact_wechat&&!wechatReg.test(this.data.task_contact_wechat)) {
+      Toast({
+        message: '正确填写微信号',
+        forbidClick: true,
+      });
+     }
+     else if (this.data.task_contact_tel&&!telReg.test(this.data.task_contact_tel)) {
        Toast({
          message: '正确填写手机号',
          forbidClick: true,
        });
      }
-     else{
-      Toast({
-        message: '请填写至少一种联系方式',
-        forbidClick: true,
-      });
-     }
+
     }
     else{
       this.addData()

@@ -1,6 +1,6 @@
 <view wx:for="{{published_data}}" wx:key="index">
   <van-card 
-    tag="{{item.task_type}}"
+    tag="{{item.task_status != 0 ? task_info.task_status == 1 ? '进行中' : '已完成' : '待接受'}}"
 		price='{{item.task_price}}'
 		desc="{{ item.task_description }}"
 		title="{{ item.task_title }}" 
