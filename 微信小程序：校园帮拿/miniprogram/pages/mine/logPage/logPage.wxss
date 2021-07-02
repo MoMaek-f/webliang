@@ -1,0 +1,5 @@
+/* miniprogram/pages/mine/logPage/logPage.wxss */
+li{
+ display: block;
+ list-style: circle;
+}

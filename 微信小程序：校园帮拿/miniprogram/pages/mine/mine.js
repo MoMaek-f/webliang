@@ -46,7 +46,7 @@ Page({
   },
   history: function () {
     let _this = this
-    if (this.data.loginStatus==true) {
+    if (_this.data.loginStatus==true) {
       wx.navigateTo({
         url: '/pages/mine/history/history',
         // success: function(res) {
@@ -64,13 +64,9 @@ Page({
   },
   mypublished: function () {
     let _this = this
-    if (this.data.loginStatus==true){
+    if (_this.data.loginStatus==true){
       wx.navigateTo({
         url: '/pages/mine/myPublished/myPublished',
-        // success: function(res) {
-        //   // 通过eventChannel向被打开页面传送数据
-        //   res.eventChannel.emit('acceptDataFromOpenerPage', { data: _this.data.userInfo })
-        // }
       })
     }
     else {
@@ -79,6 +75,21 @@ Page({
         message: '请登录之后查看',
       })
     }
+  },
+  about: function () {
+      wx.navigateTo({
+        url: '/pages/mine/about/about',
+      })
+  },
+  logPage: function () {
+      wx.navigateTo({
+        url: '/pages/mine/logPage/logPage',
+      })
+  },
+  announcement: function () {
+      wx.navigateTo({
+        url: '/pages/mine/about/about',
+      })
   },
   clickLogin: function () {
     let _this = this

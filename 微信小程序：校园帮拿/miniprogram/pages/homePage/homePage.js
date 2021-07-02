@@ -110,20 +110,11 @@ Page({
     wx.navigateTo({
       url: './task_detail/task_detail?task_id=' + e.currentTarget.dataset['task_id'],
     })
-    // let task_detail = e.currentTarget.dataset['task_detail'];
-    // console.log(e.currentTarget.dataset)
-    // Dialog.alert({
-    //   title: '任务详情',
-    //   message: task_detail,
-    // })
-    //   .then(() => {
-
-    //   })
   },
   new_publish: function () {
     if(app.globalData.loginStatus == true) {
       wx.navigateTo({
-        url: '/pages/new_publish/new_publish',
+        url: '/pages/homePage/new_publish/new_publish',
       })
     }
     else {

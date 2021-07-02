@@ -1,0 +1,8 @@
+<!--miniprogram/pages/mine/about/about.wxml-->
+<text>校园帮拿服务：微信小程序</text>
+<text>当前版本：1.0.0</text>
+<view>
+ <view style="display: inline;">开发者联系方式：</view>
+ <view style="display: inline;">微信号：ftl99511</view>
+</view>
+<text>由skylight设计开发</text>

@@ -22,10 +22,9 @@
   <van-cell title="我发布的" value="任务详情" is-link  bindtap="mypublished"/>
 </van-cell-group>
 <van-cell-group title=" ">
-  <van-cell title="公告" value="" is-link />
-  <van-cell title="日志" value="" is-link />
-  <van-cell title="反馈" value="" is-link />
-  <van-cell title="关于" value="" is-link />
+  <van-cell title="公告" value="" is-link bindtap="announcement"/>
+  <van-cell title="日志" value="" is-link  bindtap="logPage"/>
+  <van-cell title="关于" value="" is-link bindtap="about"/>
 </van-cell-group>
 <!-- 登录 -->
 <view style="display: flex; justify-content: center;">
