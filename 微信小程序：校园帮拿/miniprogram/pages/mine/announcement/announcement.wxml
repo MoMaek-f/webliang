@@ -1,0 +1,5 @@
+<!--miniprogram/pages/mine/announcement/announcement.wxml-->
+<text>在该平台发布信息请遵守以下规则</text>
+<text>1. 请规范发布任务需求</text>
+<text>2. 请认真接受并完成任务</text>
+<text>3. 严禁发布虚假信息</text>

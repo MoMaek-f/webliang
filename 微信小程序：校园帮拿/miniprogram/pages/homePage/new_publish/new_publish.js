@@ -42,10 +42,10 @@ Page({
       })
   },
   confirm_publish: function () {
-    let numReg = /^[0-9]+(\.[0-9]{1,2})?$/ // 验证是否是数字
-    let qqReg = /^\d{5,10}$/
-    let telReg = /^\d{11}$/
-    let wechatReg =/[^\u4e00-\u9fa5]+$/
+    let numReg = /^[0-9]+(\.[0-9]{1,2})?$/ // 验证是否是数字格式
+    let qqReg = /^\d{5,10}$/               // 验证是否是QQ号格式
+    let telReg = /^\d{11}$/               // 验证是否是手机号格式
+    let wechatReg =/[^\u4e00-\u9fa5]+$/     //验证是否符合微信号格式
     let timeReg = /^\d{4}-\d{1,2}-\d{1,2}/  //验证时间格式
     if(this.data.task_title === '') {
       Toast({

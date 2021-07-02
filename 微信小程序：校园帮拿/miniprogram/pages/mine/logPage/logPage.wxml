@@ -1,3 +1,4 @@
 <!--miniprogram/pages/mine/logPage/logPage.wxml-->
-<view>
-</view>
+<text>1.0.0更新日志</text>
+<text>校园帮拿服务app上线啦，快来发布你的第一条需求吧！</text>
+

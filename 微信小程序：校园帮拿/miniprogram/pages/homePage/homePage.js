@@ -40,7 +40,6 @@ Page({
       task_status: 0
     })
       .get().then((res) => {
-        // console.log("成功", res.data)
         this.setData({
           published_data: res.data
         })

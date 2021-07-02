@@ -1,9 +1,3 @@
-<!-- <van-tabs active="{{ active }}" bind:click="selector">
-  <van-tab title="{{true ? '选择学校' : '选好了'}}"></van-tab>
-  <van-tab title="{{true ? '选择时间' : '选好了'}}"></van-tab>
-  <van-tab title="{{true ? '搜索' : '选好了'}}"></van-tab>
-</van-tabs> -->
-
 <view wx:for="{{published_data}}" wx:key="index">
 	<van-card 
 		tag="{{item.task_type}}"
@@ -25,11 +19,6 @@
 				style="margin-right: 15rpx;"
 				data-task_id= "{{item._id}}"
 				catchtap="detail">详情</van-button>
-			<!-- <van-button 
-				size="mini"
-				type="primary"
-				data-task_id= "{{item._id}}"
-				catchtap="accept">接受</van-button> -->
 		</view>
 	</van-card>
 </view>
@@ -43,8 +32,6 @@
 		bindtap="new_publish">
 		<van-icon name="plus" color="green" size="50px" style="position:fixed; bottom:50rpx; left: 50px;" />
 	</view>
-
-
 
 <!-- 弹窗 -->
 <van-dialog id="van-dialog" />

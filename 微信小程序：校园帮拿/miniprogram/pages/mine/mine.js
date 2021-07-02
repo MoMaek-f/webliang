@@ -88,7 +88,7 @@ Page({
   },
   announcement: function () {
       wx.navigateTo({
-        url: '/pages/mine/about/about',
+        url: '/pages/mine/announcement/announcement',
       })
   },
   clickLogin: function () {
@@ -114,7 +114,6 @@ Page({
           userid: _this.data.userid
         })
           .get().then((res) => {
-            // console.log("登录123131321", res.data, res.data.length)
             // 如果未注册过，自动注册，并将注册信息存入数据库
             if (res.data.length == 0) {
               db.collection("user_info").add({
